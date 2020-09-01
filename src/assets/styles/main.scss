@@ -1,0 +1,39 @@
+@import '~normalize.css';
+@import './_fonts.scss';
+@import './_mixins.scss';
+@import './_colors.scss';
+
+body {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  color: $gray-900;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  *,
+  *::after,
+  *::before {
+    box-sizing: border-box;
+  }
+}
+
+a {
+  color: inherit;
+}
+
+html {
+  @include min-height100();
+
+  body {
+    @include min-height100();
+
+    #app {
+      @include min-height100();
+
+      > div {
+        @include min-height100();
+      }
+    }
+  }
+}
