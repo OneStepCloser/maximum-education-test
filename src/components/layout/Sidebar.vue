@@ -47,6 +47,7 @@ export default {
     align-items: center;
     text-decoration: none;
     padding: $padding-m;
+    transition: color 0.3s, background-color 0.3s;
 
     &:not(:first-of-type) {
       margin-top: $gutter-m;

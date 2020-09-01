@@ -5,15 +5,28 @@ const state = () => ({
 });
 
 const getters = {
-  lessonsList: ({ lessons }) => lessons,
+  currentLessons: ({ lessons }, { currentCourse }) => {
+    if (!lessons || !currentCourse) {
+      return null;
+    }
+
+    return lessons.filter((lesson) => lesson.courseId === currentCourse.id);
+  },
 };
 
 const actions = {
-  fetchLessons() {
+  fetchLessons({ commit }) {
     return fetch(lessonsListApiUrl)
-      .then((resp) => {
-        console.log(resp.json());
-      });
+      .then((resp) => resp.json()
+        .then((data) => {
+          commit('saveLessons', data);
+        }));
+  },
+};
+
+const mutations = {
+  saveLessons(state, lessons) {
+    state.lessons = lessons;
   },
 };
 
@@ -21,4 +34,5 @@ export default {
   state,
   getters,
   actions,
+  mutations,
 };
