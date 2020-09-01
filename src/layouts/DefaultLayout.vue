@@ -40,6 +40,7 @@ export default {
 
     .sidebar-outer {
       flex-shrink: 0;
+      padding: $padding-l;
     }
 
     .content-credits-container {
