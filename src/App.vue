@@ -11,5 +11,8 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
 
 export default {
   components: { DefaultLayout },
+  created() {
+    this.$store.dispatch('initState');
+  },
 };
 </script>
