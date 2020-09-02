@@ -16,6 +16,13 @@ const getters = {
     const found = lessons && lessons.find((lesson) => lesson.id === id);
     return found || null;
   },
+  currentLessonsPaginated: (state, { currentLessons }) => (page, perPage) => {
+    if (!currentLessons) return null;
+
+    const start = (page - 1) * perPage;
+
+    return currentLessons.slice(start, start + perPage);
+  },
 };
 
 const actions = {

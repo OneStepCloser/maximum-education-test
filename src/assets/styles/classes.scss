@@ -2,3 +2,27 @@
  text-align: center;
  color: $gray-500;
 }
+
+.button-clear {
+  cursor: pointer;
+  border: none;
+  margin: 0;
+  padding: 0.5em 1em;
+  outline: none;
+  user-select: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.button-accent {
+  background-color: $theme-color;
+  color: white;
+  transition: background-color 0.3s;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: scale-color($theme-color, $lightness: -10%);
+  }
+}

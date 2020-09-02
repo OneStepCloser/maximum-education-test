@@ -1,5 +1,5 @@
 <template>
-  <div class="home-view-root">
+  <div class="wip-text">
     Здесь будет главная страница
   </div>
 </template>
@@ -9,12 +9,3 @@ export default {
   name: 'Home',
 };
 </script>
-
-<style lang="scss" scoped>
-@import "@/assets/styles/_colors.scss";
-
-.home-view-root {
-  text-align: center;
-  color: $gray-500;
-}
-</style>

@@ -5,8 +5,12 @@
                        class="spinner"/>
     <template v-else>
       <h2 class="course-title">{{ currentCourse.name }}</h2>
-      <lessons-table :lessons="currentLessons"
+      <lessons-table :lessons="currentLessonsPaginated"
                      class="lessons-table-outer"/>
+      <pagination :total="currentLessons.length"
+                  :perPage="perPage"
+                  v-model="page"
+                  class="pagination-outer"/>
     </template>
   </div>
 </template>
@@ -14,9 +18,16 @@
 <script>
 import { mapGetters } from 'vuex';
 import LessonsTable from '@/components/LessonsTable.vue';
+import Pagination from '@/components/Pagination.vue';
 
 export default {
   name: 'Curriculum',
+  data() {
+    return {
+      page: 1,
+      perPage: 5,
+    };
+  },
   computed: {
     ...mapGetters([
       'coursesList',
@@ -26,8 +37,16 @@ export default {
     loading() {
       return this.currentLessons === null;
     },
+    currentLessonsPaginated() {
+      return this.$store.getters.currentLessonsPaginated(this.page, this.perPage);
+    },
   },
-  components: { LessonsTable },
+  watch: {
+    currentCourse(to, from) {
+      if (from) this.page = 1;
+    },
+  },
+  components: { Pagination, LessonsTable },
 };
 </script>
 
@@ -64,6 +83,12 @@ export default {
 
   .lessons-table-outer {
     margin-top: 1.5em;
+    width: 100%;
+  }
+
+  .pagination-outer {
+    margin-top: 1em;
+    align-self: stretch;
   }
 }
 </style>
