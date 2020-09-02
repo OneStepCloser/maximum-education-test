@@ -2,7 +2,7 @@
   <table class="lessons-table-root">
     <thead>
       <tr>
-        <th></th>
+        <th class="collapsed-cell"></th>
         <th class="header-cell">Дата, время</th>
         <th class="header-cell">Тема занятия</th>
       </tr>
@@ -11,7 +11,7 @@
       <tr v-for="lesson in lessons"
           :key="lesson.id"
           class="table-body-row">
-        <td class="link-cell">
+        <td class="collapsed-cell link-cell">
           <router-link :to="`/lessons/${lesson.id}/tests`"
                        class="link"/>
         </td>
@@ -75,6 +75,13 @@ export default {
   border-collapse: collapse;
   overflow: hidden;
 
+  .collapsed-cell {
+    padding-left: 0;
+    padding-right: 0;
+    width: 0;
+    border: none;
+  }
+
   .header-cell,
   .table-body-cell {
     padding: 0.5em 1.5em;
@@ -89,6 +96,7 @@ export default {
   .table-body-row {
     .table-body-cell.title {
       font-weight: 600;
+      border-left: 1px solid $gray-100;
     }
 
     &:hover {
