@@ -67,6 +67,8 @@ export default {
   }
 
   .next-button {
+    margin-left: 1em;
+
     .arrow-icon {
       margin-left: 0.5em;
     }
