@@ -1,24 +1,13 @@
-# maximum-education
+# EduMax
 
-## Project setup
+Тестовое задание для Образовательного Центра Maximum.
+
+## Запуск проекта
+Нужно перейти в директорию проекта и выполнить следующие команды:
 ```
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
 npm run serve
 ```
+После этого проект в режиме разработки будет доступен по адресу localhost:8080
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
