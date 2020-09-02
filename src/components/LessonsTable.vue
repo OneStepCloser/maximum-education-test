@@ -2,8 +2,7 @@
   <table class="lessons-table-root">
     <thead>
       <tr>
-        <th>
-        </th>
+        <th></th>
         <th class="header-cell">Дата, время</th>
         <th class="header-cell">Тема занятия</th>
       </tr>
@@ -13,7 +12,8 @@
           :key="lesson.id"
           class="table-body-row">
         <td class="link-cell">
-          <a href="#" class="link"></a> <!-- TODO -->
+          <router-link :to="`/lessons/${lesson.id}`"
+                       class="link"/>
         </td>
         <td class="table-body-cell">{{ lesson.startedAt | dateFormatted }}</td>
         <td class="table-body-cell title">{{ lesson.title }}</td>

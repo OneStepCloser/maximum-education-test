@@ -1,14 +1,14 @@
 <template>
-<div class="curriculum-root">
-  <font-awesome-icon v-if="loading"
-                     icon="spinner"
-                     class="spinner"/>
-  <template v-else>
-    <h2 class="course-title">{{ currentCourse.name }}</h2>
-    <lessons-table :lessons="currentLessons"
-                   class="lessons-table-outer"/>
-  </template>
-</div>
+  <div class="curriculum-root">
+    <font-awesome-icon v-if="loading"
+                       icon="spinner"
+                       class="spinner"/>
+    <template v-else>
+      <h2 class="course-title">{{ currentCourse.name }}</h2>
+      <lessons-table :lessons="currentLessons"
+                     class="lessons-table-outer"/>
+    </template>
+  </div>
 </template>
 
 <script>

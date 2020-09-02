@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '@/views/Home.vue';
 import Curriculum from '@/views/Curriculum.vue';
+import Lesson from '@/views/Lesson.vue';
 
 Vue.use(VueRouter);
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/curriculum',
     name: 'Curriculum',
     component: Curriculum,
+  },
+  {
+    path: '/lessons/:id',
+    name: 'Lesson',
+    component: Lesson,
   },
 ];
 

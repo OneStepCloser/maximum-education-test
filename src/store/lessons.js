@@ -12,6 +12,10 @@ const getters = {
 
     return lessons.filter((lesson) => lesson.courseId === currentCourse.id);
   },
+  getLesson: ({ lessons }) => (id) => {
+    const found = lessons && lessons.find((lesson) => lesson.id === id);
+    return found || null;
+  },
 };
 
 const actions = {
