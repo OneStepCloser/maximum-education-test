@@ -4,74 +4,39 @@
         class="lesson-title">
       Урок "{{ currentLesson.title }}"
     </h2>
-    <tabs v-model="currentTab"
-          :options="tabsPrimitive"
-          class="tabs-outer">
-      <template v-slot="{ option }">
-        {{ tabsMap[option].label }}
-      </template>
-    </tabs>
-    <component :is="tabContentComponent"/>
+    <tabs-links :links="tabs"
+                class="tabs-outer"/>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import Tabs from '@/components/Tabs.vue';
-
-const Tab = {
-  TESTS: 'tests',
-  STATICTICS: 'statistics',
-};
+import TabsLinks from '@/components/TabsLinks.vue';
 
 export default {
   name: 'Lesson',
-  data() {
-    const tabs = [
-      {
-        id: Tab.TESTS,
-        label: 'Тесты',
-      },
-      {
-        id: Tab.STATICTICS,
-        label: 'Статистика',
-      },
-    ];
-
-    return {
-      currentTab: tabs[0].id,
-      tabs,
-    };
-  },
   computed: {
-    tabsPrimitive() {
-      return this.tabs.map((tab) => tab.id);
-    },
-    tabsMap() {
-      const res = {};
-
-      this.tabs.forEach((tab) => {
-        res[tab.id] = tab;
-      });
-
-      return res;
-    },
-    tabContentComponent() {
-      const componentsMap = {
-        [Tab.STATICTICS]: 'statictics',
-        [Tab.TESTS]: 'tests',
-      };
-
-      return componentsMap[this.currentTab];
-    },
     currentLesson() {
       const { id } = this.$route.params;
       return this.$store.getters.getLesson(id);
     },
+    tabs() {
+      if (!this.currentLesson) return [];
+
+      return [
+        {
+          path: `/lessons/${this.currentLesson.id}/tests`,
+          label: 'Тесты',
+        },
+        {
+          path: `/lessons/${this.currentLesson.id}/statistics`,
+          label: 'Статистика',
+        },
+      ];
+    },
   },
   components: {
-    Tabs,
-    statictics: () => import('@/components/Statistics'),
-    tests: () => import('@/components/Tests'),
+    TabsLinks,
   },
 };
 </script>

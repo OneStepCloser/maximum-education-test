@@ -12,7 +12,7 @@
           :key="lesson.id"
           class="table-body-row">
         <td class="link-cell">
-          <router-link :to="`/lessons/${lesson.id}`"
+          <router-link :to="`/lessons/${lesson.id}/tests`"
                        class="link"/>
         </td>
         <td class="table-body-cell">{{ lesson.startedAt | dateFormatted }}</td>
